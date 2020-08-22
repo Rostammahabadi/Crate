@@ -1,14 +1,15 @@
 {
   "development": {
-    "username": "postgres",
+    "username": "skb",
     "password": null,
     "database": "crate",
     "host": "127.0.0.1",
     "dialect": "postgres",
     "seederStorage": "sequelize"
   },
+
   "production": {
-    "username": "postgres",
+    "username": "skb",
     "password": null,
     "database": "crate",
     "host": "127.0.0.1",
