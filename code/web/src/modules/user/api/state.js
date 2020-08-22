@@ -47,3 +47,5 @@ export default (state = userInitialState, action) => {
       return state
   }
 }
+
+// Add update action to cases. It will need to be authenticated. 
