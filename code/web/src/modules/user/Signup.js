@@ -39,6 +39,8 @@ class Signup extends Component {
     }
   }
 
+  // User will need to include shipping address, description, and image
+
   onChange = (event) => {
     let user = this.state.user
     user[event.target.name] = event.target.value
@@ -160,6 +162,8 @@ class Signup extends Component {
                 style={{ marginTop: '1em' }}
               />
             </div>
+
+            // Add divs for shipping address, description, and image. Determine which ones are not required and code accordingly. 
 
             <div style={{ marginTop: '2em' }}>
               {/* Login link */}
