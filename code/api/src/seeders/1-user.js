@@ -31,4 +31,6 @@ module.exports = {
   }
 }
 
-// I wonder if we will have to update these seed users with the new fields that we added. The user story is vague about whether image, description, and shipping address will be required to create a user. Shipping address seems like an obvious yes, but the others could be optional. 
+// I wonder if we will have to update these seed users with the new fields that we added. The user story is vague about whether image, description, and shipping address will be required to create a user. Shipping address seems like an obvious yes, but the others could be optional.
+
+// Need to add seeders for subscription and userProducts to verify that user profile appears as expected 
