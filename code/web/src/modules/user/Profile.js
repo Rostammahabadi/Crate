@@ -30,6 +30,14 @@ const Profile = (props) => (
       </GridCell>
     </Grid>
 
+    // Profile will now include:
+    //    - image
+    //    - description
+    //    - email address w/ ability to update
+    //    - shipping address w/ ability to update
+    //    - all products recieved, with indication of which have been kept
+    //    - upcoming delivery date w/ ability to update
+
     <Grid>
       <GridCell style={{ padding: '2em', textAlign: 'center' }}>
         <H4 style={{ marginBottom: '0.5em' }}>{props.user.details.name}</H4>
@@ -60,3 +68,5 @@ function profileState(state) {
 }
 
 export default connect(profileState, { logout })(Profile)
+
+// How do we make this page public? Is it already?
