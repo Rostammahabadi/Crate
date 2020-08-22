@@ -14,8 +14,11 @@ const UserType = new GraphQLObjectType({
     role: { type: GraphQLString },
     createdAt: { type: GraphQLString },
     updatedAt: { type: GraphQLString }
+    // Add new attributes here
   })
 })
+
+
 
 // User Login type
 const UserLoginType = new GraphQLObjectType({
