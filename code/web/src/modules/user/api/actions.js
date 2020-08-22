@@ -3,6 +3,8 @@ import axios from 'axios'
 import { query, mutation } from 'gql-query-builder'
 import cookie from 'js-cookie'
 
+// axios makes the HTTP request
+
 // App Imports
 import { routeApi } from '../../../setup/routes'
 
@@ -11,6 +13,8 @@ export const LOGIN_REQUEST = 'AUTH/LOGIN_REQUEST'
 export const LOGIN_RESPONSE = 'AUTH/LOGIN_RESPONSE'
 export const SET_USER = 'AUTH/SET_USER'
 export const LOGOUT = 'AUTH/LOGOUT'
+
+// Add update action here once it is created 
 
 // Actions
 
@@ -25,6 +29,9 @@ export function setUser(token, user) {
   return { type: SET_USER, user }
 }
 
+// In which file are we passing the variables token and user to the method?
+// '../setup/client/index.js'
+
 // Login a user using credentials
 export function login(userCredentials, isLoading = true) {
   return dispatch => {
@@ -38,6 +45,11 @@ export function login(userCredentials, isLoading = true) {
       variables: userCredentials,
       fields: ['user {name, email, role}', 'token']
     }))
+
+    // As we learned from Megan in the lesson on testing, `POST` is the preferred HTTP verb, but this is actually a get reuest?
+
+    // Add new attributes to fields
+
       .then(response => {
         let error = ''
 
@@ -117,3 +129,5 @@ export function getGenders() {
     }))
   }
 }
+
+// We will have to add an entirely new export function for update user. The register function will be a good starting place.
