@@ -23,3 +23,7 @@ module.exports = function(sequelize, DataTypes) {
     }
   })
 }
+
+// Add belongs to relationship for products belongs to user through userProducts
+
+// userProducts will need to not only associate product with user, but also track date (which it does automatically) and whether a product was returned (Boolean). The latter can be updated so a product can be updated to "returned".
