@@ -14,18 +14,22 @@ export async function create(parentValue, { name, email, password }) {
 
   if (!user) {
     // User does not exists
+    // Creates a password digest before storing
     const passwordHashed = await bcrypt.hash(password, serverConfig.saltRounds)
 
     return await models.User.create({
       name,
       email,
       password: passwordHashed
+      // new attributes will need to be added here. I assume that if we allow a default value of null we can just list them all here and null values will be added for fields where no data is provided
     })
   } else {
     // User exists
     throw new Error(`The email ${ email } is already registered. Please try to login.`)
   }
 }
+
+// Here we will create an update resolver. It will follow the above structure closely.
 
 export async function login(parentValue, { email, password }) {
   const user = await models.User.findOne({ where: { email } })
@@ -48,6 +52,7 @@ export async function login(parentValue, { email, password }) {
         name: userDetails.name,
         email: userDetails.email,
         role: userDetails.role
+        // Add new attributes to token
       }
 
       return {
