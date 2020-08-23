@@ -45,6 +45,8 @@ export function login(userCredentials, isLoading = true) {
       variables: userCredentials,
       fields: ['user {name, email, role}', 'token']
       // Add new attributes to fields
+      // Include userProducts with return status
+      // Include data of next subscription 
     }))
 
     // As we learned from Megan in the lesson on testing, `POST` is the preferred HTTP verb, but this is actually a get request?
@@ -96,6 +98,7 @@ export function register(userDetails) {
       operation: 'userSignup',
       variables: userDetails,
       fields: ['id', 'name', 'email']
+      // add image, description, shipping address to fields
     }))
   }
 }
