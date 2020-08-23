@@ -69,4 +69,4 @@ function profileState(state) {
 
 export default connect(profileState, { logout })(Profile)
 
-// How do we make this page public? Is it already?
+// Question for extension: How do we make this page public? Is it already?
