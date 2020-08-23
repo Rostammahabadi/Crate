@@ -15,6 +15,7 @@ const UserType = new GraphQLObjectType({
     createdAt: { type: GraphQLString },
     updatedAt: { type: GraphQLString }
     // Add new attributes here
+    // Will we need to add userProducts here? 
   })
 })
 
