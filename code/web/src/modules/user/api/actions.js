@@ -14,7 +14,7 @@ export const LOGIN_RESPONSE = 'AUTH/LOGIN_RESPONSE'
 export const SET_USER = 'AUTH/SET_USER'
 export const LOGOUT = 'AUTH/LOGOUT'
 
-// Add update action here once it is created 
+// Add update action here once it is created
 
 // Actions
 
@@ -44,11 +44,12 @@ export function login(userCredentials, isLoading = true) {
       operation: 'userLogin',
       variables: userCredentials,
       fields: ['user {name, email, role}', 'token']
+      // Add new attributes to fields
     }))
 
-    // As we learned from Megan in the lesson on testing, `POST` is the preferred HTTP verb, but this is actually a get reuest?
+    // As we learned from Megan in the lesson on testing, `POST` is the preferred HTTP verb, but this is actually a get request?
 
-    // Add new attributes to fields
+
 
       .then(response => {
         let error = ''
@@ -99,6 +100,8 @@ export function register(userDetails) {
   }
 }
 
+// We will have to add an entirely new export function for update user. The register function will be a good starting place.
+
 // Log out user and remove token from localStorage
 export function logout() {
   return dispatch => {
@@ -129,5 +132,3 @@ export function getGenders() {
     }))
   }
 }
-
-// We will have to add an entirely new export function for update user. The register function will be a good starting place.
