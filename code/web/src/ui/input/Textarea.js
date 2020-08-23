@@ -6,6 +6,7 @@ import PropTypes from 'prop-types'
 import { grey2, grey4, black } from '../common/colors'
 
 // Component
+// use textArea component for BIO feature for Profile 
 const Textarea = (props) => {
   const { children, fullWidth, ...other } = props
 

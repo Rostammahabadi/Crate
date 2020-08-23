@@ -20,6 +20,11 @@ export const PRODUCTS_GET_RELATED_LIST_FAILURE = 'PRODUCTS/GET_RELATED_LIST_FAIL
 // Actions
 
 // Get list of products
+// middleware function that returns specific axios request depending 
+// on the action received and dispatched 
+// the post further dispatches depending on request response from axios
+// this function has closure or currying that will further dispatch 
+// a specific action based on the response from the axios 
 export function getList(isLoading = true, forceRefresh = false) {
   return dispatch => {
     dispatch({
@@ -66,6 +71,9 @@ export function get(slug, isLoading = true) {
       isLoading
     })
 
+    // what is a slug? 
+    // slug seems to be similar  to an "alt text" property
+    // mostly contains actions for error handling below
     return axios.post(routeApi, query({
       operation: 'product',
       variables: { slug },

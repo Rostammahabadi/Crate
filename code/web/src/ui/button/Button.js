@@ -8,6 +8,7 @@ import { primary as primaryGradient, secondary as secondaryGradient } from '../c
 import { level1, level2, level3, level4 } from '../common/shadows'
 
 // Component
+// re-use component for buttons needed for page restructure
 const Button = (props) => {
   const { children, type, disabled, theme, ...other } = props
 

@@ -114,6 +114,7 @@ Detail.propTypes = {
 }
 
 // Component State
+// this fn returns the state for this component
 function detailState(state) {
   return {
     product: state.product

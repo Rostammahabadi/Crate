@@ -67,6 +67,7 @@ Layout.propTypes = {
 
 // Component State
 function commonState(state) {
+  console.log(state.common)
   return {
     common: state.common
   }

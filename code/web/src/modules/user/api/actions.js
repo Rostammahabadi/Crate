@@ -3,6 +3,8 @@ import axios from 'axios'
 import { query, mutation } from 'gql-query-builder'
 import cookie from 'js-cookie'
 
+console.log(axios.defaults.headers, 'axios')
+
 // App Imports
 import { routeApi } from '../../../setup/routes'
 
@@ -13,7 +15,6 @@ export const SET_USER = 'AUTH/SET_USER'
 export const LOGOUT = 'AUTH/LOGOUT'
 
 // Actions
-
 // Set a user after login or using localStorage token
 export function setUser(token, user) {
   if (token) {
@@ -32,7 +33,7 @@ export function login(userCredentials, isLoading = true) {
       type: LOGIN_REQUEST,
       isLoading
     })
-
+    // operation userLogin is matching the query on API
     return axios.post(routeApi, query({
       operation: 'userLogin',
       variables: userCredentials,
@@ -87,7 +88,16 @@ export function register(userDetails) {
   }
 }
 
+
+// SEEM to be passing an action into dispatch, rather than calling 
+// an action function. Since all actions are state, this seems to work. 
+// how can we mock these for testing? 
+
 // Log out user and remove token from localStorage
+
+// this logout function is getting passed as props to Profile for btn fn 
+// this fn returns a dispatch fn that both runs the logoutStorage fn and 
+// passes down the "LOGOUT ACTION" defined above in line 17 adding the auth/logout 
 export function logout() {
   return dispatch => {
     logoutUnsetUserLocalStorageAndCookie()
@@ -99,6 +109,8 @@ export function logout() {
 }
 
 // Unset user token and info in localStorage and cookie
+// this fn removes local storage tokens for the user 
+// also removes cookie for authorization
 export function logoutUnsetUserLocalStorageAndCookie() {
   // Remove token
   window.localStorage.removeItem('token')
@@ -117,3 +129,14 @@ export function getGenders() {
     }))
   }
 }
+
+// DEFINE FUNCTION TO DISPATCH THE DATA NEEDED OR POST THE NEW DATA 
+// also create one single post that handles this from the class component state 
+
+// perhaps
+// POST IMG FN (maybe patch)
+// POST SUMMARY FN (maybe patch)
+// POST EMAIL FN (maybe patch)
+// POST SHIPPING ADDRESS FN (maybe patch)
+// GET ORDER HISTORY FN
+// GET ITEMS KEPT FN

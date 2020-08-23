@@ -135,3 +135,5 @@ export function remove(variables) {
     }))
   }
 }
+
+// ^^ all mutation operations are a string of the hash/obj name in the mutations folder

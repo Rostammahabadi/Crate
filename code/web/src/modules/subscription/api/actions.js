@@ -26,7 +26,7 @@ export function getList(isLoading = true) {
       error: null,
       isLoading
     })
-
+  
     return axios.post(routeApi, query({
       operation: 'subscriptions',
       fields: ['id', 'user { name, email }', 'crate { id, name, description }', 'createdAt']

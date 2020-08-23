@@ -8,6 +8,10 @@ import Layout from '../../modules/common/Layout'
 import NotFound from '../../modules/common/NotFound'
 import RoutePrivate from '../../modules/auth/RoutePrivate'
 
+
+// SWITCH WITHIN THE APP? rather than wrapping the app? 
+// Inside Switch statement - doing Object.values over routes object to turn routes into array
+// 
 const App = () => (
   <Layout>
     <Switch>

@@ -10,6 +10,8 @@ export const commonInitialState = {
 }
 
 // State
+// reducers below
+// anonymous fn setting action objects as State
 export default (state = commonInitialState, action) => {
   switch (action.type) {
     case MESSAGE_SHOW:

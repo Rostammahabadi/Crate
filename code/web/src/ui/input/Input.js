@@ -6,6 +6,8 @@ import PropTypes from 'prop-types'
 import { grey2, grey4, black } from '../common/colors'
 
 // Component
+// try to reuse this for the new inputs required for Profile
+// input for address, email
 const Input = (props) => {
   const { type, fullWidth, ...other } = props
 

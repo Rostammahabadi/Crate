@@ -23,6 +23,8 @@ if (token && token !== 'undefined' && token !== '') {
 }
 
 // Client App
+// Provider connects store to all components in application
+
 const Client = () => (
   <Provider store={store} key="provider">
     <Router>

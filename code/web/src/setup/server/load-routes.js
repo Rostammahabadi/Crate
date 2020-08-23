@@ -90,7 +90,8 @@ export default function (app) {
 
           const html = view(APP_URL, NODE_ENV, helmet, appHtml, styles, initialState)
 
-          // Reset the state on server
+          // Reset the state on server 
+          // is this passed into in the rootReducer fn in store? 
           store.dispatch({
             type: 'RESET'
           })

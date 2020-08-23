@@ -3,6 +3,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 // Component
+// can we reuse this component for placing the user image in Profile page?!?
 const Tile = (props) => {
   const { children, image, width, height, style, shadow, ...others } = props
 

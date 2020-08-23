@@ -24,6 +24,7 @@ class Subscriptions extends PureComponent {
   }
 
   // Runs on client only
+  // this runs a fetch that returns a promise
   componentDidMount() {
     this.props.getListByUser()
   }

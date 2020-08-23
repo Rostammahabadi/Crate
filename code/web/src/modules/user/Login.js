@@ -47,6 +47,9 @@ class Login extends Component {
     })
   }
 
+
+  // why does onsubmit have a window.setTimeout? Is this faking a async call? 
+  // maybe this needs to get translated into an async fn
   onSubmit = (event) => {
     event.preventDefault()
 
