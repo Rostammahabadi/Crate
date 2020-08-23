@@ -42,7 +42,9 @@ export const userLogin = {
   resolve: login
 }
 
-// I think that this authorization is going to come into play when we are updating an existing user's email and shipping address, since we will need to verify that they are logged in as the user they are attempting to update 
+// I think that this authorization is going to come into play when we are updating an existing user's email and shipping address, since we will need to verify that they are logged in as the user they are attempting to update
+
+// query to get products for a particular user? How do we use SQL to get products where user == user 
 
 // Genders
 export const userGenders = {
