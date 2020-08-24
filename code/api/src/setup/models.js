@@ -4,6 +4,7 @@ import Sequelize from 'sequelize'
 // App Imports
 import databaseConnection from './database'
 
+// this seems to be what we refer to for defining associations between different models/tables?
 const models = {
   User: databaseConnection.import('../modules/user/model'),
   Product: databaseConnection.import('../modules/product/model'),

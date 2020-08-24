@@ -51,9 +51,12 @@ import { logout } from './api/actions'
 // need to display upcoming subscription shipping date 
 
 
-// this can be changed to a Class component
-// provide state for all the inputs to change state for bio/img/address/email with a FORM
+// this component will need state - add Hooks for all inputs state (or translate to class)
+// the inputs to change state for bio/img/address/email - with a FORM?
 // state is required because redux cannot update state with Actions???
+
+// use input html tag type FILE that does the uploading of files from local
+// need to figure out how to post an image!
 
 const Profile = (props) => (
   <div>
@@ -113,5 +116,4 @@ function profileState(state) {
 // profileState is the mapStateToProps - allows STORE access 
 // destructured logout is the mapDispatchToProps - allows UPDATING the stor
 // curried fn passes the result of the connect into the Profile component
-// all fn built for editing state will be passed below with logout 
 export default connect(profileState, { logout })(Profile)

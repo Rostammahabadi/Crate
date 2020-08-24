@@ -3,6 +3,7 @@ import { Sequelize } from 'sequelize'
 
 // App Imports
 import { NODE_ENV } from '../config/env'
+// pulls in database connection for 
 import databaseConfig from '../config/database.json'
 
 // Load database config
@@ -14,10 +15,12 @@ const connection = new Sequelize(databaseConfigEnv.database, databaseConfigEnv.u
   dialect: databaseConfigEnv.dialect,
   logging: false
 })
+// ^^^ handles connecting the database
 
 // Test connection
 console.info('SETUP - Connecting database...')
 
+//authenticates connection to database on validation
 connection
   .authenticate()
   .then(() => {

@@ -3,6 +3,11 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 // Component
+// can use this component and pass in the styling as props
+// instead of styling each accordingly 
+// by passing in prop of alignTop - - that triggers boolean logic on ternary 
+
+// ...others - allows us to pass other styles 
 const GridCell = (props) => {
   const {
     children,

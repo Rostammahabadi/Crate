@@ -34,6 +34,7 @@ export function login(userCredentials, isLoading = true) {
       isLoading
     })
     // operation userLogin is matching the query on API
+    // fields allows us to add extra properties that need to get pulled in from BE (i.e. address, bio, img, etc)
     return axios.post(routeApi, query({
       operation: 'userLogin',
       variables: userCredentials,
@@ -94,7 +95,6 @@ export function register(userDetails) {
 // how can we mock these for testing? 
 
 // Log out user and remove token from localStorage
-
 // this logout function is getting passed as props to Profile for btn fn 
 // this fn returns a dispatch fn that both runs the logoutStorage fn and 
 // passes down the "LOGOUT ACTION" defined above in line 17 adding the auth/logout 
@@ -130,13 +130,6 @@ export function getGenders() {
   }
 }
 
-// DEFINE FUNCTION TO DISPATCH THE DATA NEEDED OR POST THE NEW DATA 
-// also create one single post that handles this from the class component state 
-
-// perhaps
-// POST IMG FN (maybe patch)
-// POST SUMMARY FN (maybe patch)
-// POST EMAIL FN (maybe patch)
-// POST SHIPPING ADDRESS FN (maybe patch)
-// GET ORDER HISTORY FN
-// GET ITEMS KEPT FN
+// DEFINE FUNCTION TO DISPATCH THE DATA NEEDED OR POST THE NEW DATA
+// axios.post(routeApi, mutation({ operation: .... , variable: ...., field: ....})) 
+// also create one single post that handles this from the stateful component state 

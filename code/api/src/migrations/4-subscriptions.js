@@ -37,3 +37,6 @@ module.exports = {
     return queryInterface.dropTable('subscriptions');
   }
 }
+
+// do we need to track the createdAt/updatedAt properties with the Date to calculate
+// the dates for delivery for user subscribed? 

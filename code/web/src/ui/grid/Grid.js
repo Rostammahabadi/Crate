@@ -3,6 +3,9 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 // Component
+// these re-usable components seem to be passing css properties to be 
+// displayed on ternary - passed will activates css attr, not passed does nothing
+// could pass all necessary properties for display through props
 const Grid = (props) => {
   const {
     children,

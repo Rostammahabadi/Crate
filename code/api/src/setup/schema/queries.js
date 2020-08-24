@@ -2,6 +2,7 @@
 import { GraphQLObjectType } from 'graphql'
 
 // App Imports
+// pulls in all queries into one variables and defines its fields
 import * as user from '../../modules/user/query'
 import * as product from '../../modules/product/query'
 import * as crate from '../../modules/crate/query'

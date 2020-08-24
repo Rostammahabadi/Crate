@@ -7,6 +7,9 @@ const UserType = new GraphQLObjectType({
   description: 'User type',
 
   fields: () => ({
+    // new attributes get added here! 
+    // ex. address, summary, image
+    // do we need attr for user subscriptions? 
     id: { type: GraphQLInt },
     name: { type: GraphQLString },
     email: { type: GraphQLString },

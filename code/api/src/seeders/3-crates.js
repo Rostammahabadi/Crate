@@ -1,5 +1,6 @@
 'use strict';
-
+// this communicates with DB 
+// inserts items in bulkInsert into a table 
 module.exports = {
   up: (queryInterface, Sequelize) => {
     return queryInterface.bulkInsert('crates', [

@@ -33,3 +33,6 @@ module.exports = {
     return queryInterface.dropTable('users');
   }
 }
+
+// our createTable probably needs to update the users being created to have 
+// all the new features (bio, img, orders, address, etc) and define their values with Sequelize

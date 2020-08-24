@@ -21,6 +21,9 @@ export const user = {
 }
 
 // Auth
+// this needs an addition of args to Email, Address, Bio Description, Image
+// could also get an array of products delivered, products kept, current subscriptions?
+// Does the address need to be required here? and if yes, do we need to update the login page as well? 
 export const userLogin = {
   type: UserLoginType,
   args: {

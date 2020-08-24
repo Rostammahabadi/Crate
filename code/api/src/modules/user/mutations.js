@@ -6,6 +6,8 @@ import { UserType } from './types'
 import { create, remove } from './resolvers'
 
 // Create
+// does this need a userUpdate mutation? for the post in FE
+// userSignup should add all new properties of the user (bio, img, orders, address)
 export const userSignup = {
   type: UserType,
   args: {
@@ -28,6 +30,8 @@ export const userSignup = {
 }
 
 // Remove
+// this removes the user with the resolver below
+// it requires the user id 
 export const userRemove = {
   type: UserType,
   args: {

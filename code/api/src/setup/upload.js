@@ -6,6 +6,8 @@ import multer from 'multer'
 import serverConfig from '../config/server.json'
 
 // File upload configurations and route
+// this is probably where we will store our image uploading feature to be able to 
+// add it to the user and then add this to the user object
 export default function (server) {
   console.info('SETUP - Upload...')
 

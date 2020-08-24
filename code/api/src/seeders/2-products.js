@@ -1,7 +1,8 @@
 'use strict';
 
 const params = require('../config/params');
-
+// communicates with DB
+// inserts all items in list into table
 module.exports = {
   up: (queryInterface, Sequelize) => {
     return queryInterface.bulkInsert('products', [

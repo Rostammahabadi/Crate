@@ -8,6 +8,10 @@ import params from '../../config/params'
 import models from '../../setup/models'
 
 // Create
+// this validates user creation 
+// if user already exists - error is thrown
+// it encrypts the password inserted 
+// it creates a new user on the table? 
 export async function create(parentValue, { name, email, password }) {
   // Users exists with same email check
   const user = await models.User.findOne({ where: { email } })
@@ -17,6 +21,7 @@ export async function create(parentValue, { name, email, password }) {
     const passwordHashed = await bcrypt.hash(password, serverConfig.saltRounds)
 
     return await models.User.create({
+      // this new User created should contain all missing attributes for features
       name,
       email,
       password: passwordHashed
@@ -77,3 +82,5 @@ export async function remove(parentValue, { id }) {
 export async function getGenders() {
   return Object.values(params.user.gender)
 }
+
+// Need updated Resolver for features functionality 

@@ -85,6 +85,10 @@ export const productUpdate = {
 }
 
 // Product remove
+// this allows to remove a product from column with an id
+// might be the way to connect adding functionality to see
+// products in a specific crate and user might be able to toggle if they would want 
+// to keep it (purchase) or return it with the crate 
 export const productRemove = {
   type: ProductType,
   args: {

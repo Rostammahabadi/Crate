@@ -5,6 +5,9 @@ import graphqlHTTP from 'express-graphql'
 import serverConfig from '../config/server.json'
 import authentication from './authentication'
 import schema from './schema'
+//^^^ adds all authentication + queries/mutations from schema 
+// passes schema on graphQL request below
+// this is where the server is defined 
 
 // Setup GraphQL
 export default function (server) {
