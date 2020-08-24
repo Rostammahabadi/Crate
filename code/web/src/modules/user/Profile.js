@@ -16,6 +16,21 @@ import userRoutes from '../../setup/routes/user'
 import { logout } from './api/actions'
 
 // Component
+
+// props incoming from store have the following form:
+// user {
+  // details: {
+  //   email: 'email@email.com',
+  //   name: 'user',
+  //   role: 'USER'
+  // },
+  // error: '',
+  // isAuthenticated: true,
+  // isLoading: false
+// }
+
+// props also receives a logout function that is passed to the button
+
 const Profile = (props) => (
   <div>
     {/* SEO */}
@@ -53,10 +68,17 @@ Profile.propTypes = {
 }
 
 // Component State
+// this gets passed for to connect
 function profileState(state) {
   return {
     user: state.user
   }
 }
 
+
+// connect ties our component state to the redux store
+// profileState is the mapStateToProps - allows STORE access
+// destructured logout is the mapDispatchToProps - allows UPDATING to store
+// curried fn passes the result of the connect into the Profile component
+// all fn built for editing state will be passed below with logout
 export default connect(profileState, { logout })(Profile)

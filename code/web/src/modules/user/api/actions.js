@@ -6,7 +6,7 @@ import cookie from 'js-cookie'
 // App Imports
 import { routeApi } from '../../../setup/routes'
 
-// Actions Types
+// Actions Types that define what kind of dispatch needs to be set
 export const LOGIN_REQUEST = 'AUTH/LOGIN_REQUEST'
 export const LOGIN_RESPONSE = 'AUTH/LOGIN_RESPONSE'
 export const SET_USER = 'AUTH/SET_USER'
@@ -33,9 +33,11 @@ export function login(userCredentials, isLoading = true) {
       isLoading
     })
 
+    // matches the entered user info to the api
     return axios.post(routeApi, query({
       operation: 'userLogin',
       variables: userCredentials,
+      // where FE and BE will work together to get the correct info?
       fields: ['user {name, email, role}', 'token']
     }))
       .then(response => {
@@ -87,7 +89,14 @@ export function register(userDetails) {
   }
 }
 
+// looks to be passing an action into dispatch, rather then calling
+// an action fn. Since all actions are state,this seems to work
+// think about how we can test this?
+
 // Log out user and remove token from localStorage
+// this logout fn is getting passed as props to Profile for btn fn
+// this fn returns a dispatch fn that both runs the LS fn and 
+// passes down the 'LOGOUT Action' defined about in line 17 adding the auth/logout
 export function logout() {
   return dispatch => {
     logoutUnsetUserLocalStorageAndCookie()
@@ -99,6 +108,8 @@ export function logout() {
 }
 
 // Unset user token and info in localStorage and cookie
+// this fn removed the LS token for the user
+// also removed cookie for authorization
 export function logoutUnsetUserLocalStorageAndCookie() {
   // Remove token
   window.localStorage.removeItem('token')
@@ -117,3 +128,11 @@ export function getGenders() {
     }))
   }
 }
+
+// DEFINED FN TO DISPATCH THE DATA NEEDED OR POST THE NEW DATA
+// POST img fn
+// POST summary fn
+// GET order history fn
+// GET items kept fn
+// PATCH/POST? email fn
+// PATCH/POST? shipping address

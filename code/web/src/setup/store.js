@@ -11,6 +11,9 @@ import * as subscription from '../modules/subscription/api/state'
 import * as crate from '../modules/crate/api/state'
 
 // App Reducer
+// combined reducers grabs all reducers in one place
+// it is pulling them from their specific api/state file that has all 
+// the reducers in anonymous functions
 const appReducer = combineReducers({
   common,
   user,
@@ -20,6 +23,8 @@ const appReducer = combineReducers({
 })
 
 // Root Reducer
+// this rootReducer returns the appReducer (combination of all reducers)
+
 export const rootReducer = (state, action) => {
   if (action.type === 'RESET') {
     state = undefined
