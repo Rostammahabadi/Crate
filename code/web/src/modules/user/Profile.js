@@ -58,5 +58,5 @@ function profileState(state) {
     user: state.user
   }
 }
-
+// connects store
 export default connect(profileState, { logout })(Profile)

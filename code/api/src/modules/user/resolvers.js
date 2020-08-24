@@ -1,3 +1,6 @@
+// We will need to add a resolver to handle the errors for description, shipping address,
+// image
+
 // Imports
 import bcrypt from 'bcrypt'
 import jwt from 'jsonwebtoken'

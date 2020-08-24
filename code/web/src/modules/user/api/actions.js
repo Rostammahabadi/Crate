@@ -24,7 +24,8 @@ export function setUser(token, user) {
 
   return { type: SET_USER, user }
 }
-
+// This will need to be updated to get the description, shipping address, image, and products
+// for the user (line 40)
 // Login a user using credentials
 export function login(userCredentials, isLoading = true) {
   return dispatch => {

@@ -1,3 +1,5 @@
+// Resolvers are error handling tools which also deal with functionality (methods)
+
 // App Imports
 import params from '../../config/params'
 import models from '../../setup/models'

@@ -1,3 +1,6 @@
+// These are the queries that are essentially the exposed endpoints which return information
+
+
 // Imports
 import { GraphQLString, GraphQLInt, GraphQLList } from 'graphql'
 

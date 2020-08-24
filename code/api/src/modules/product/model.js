@@ -1,5 +1,7 @@
 'use strict'
-
+// This file is creating the model for the product object (JS)
+// It is defining the datatypes and the attirubtes of the model
+// Will need to update with relationships for the user product (belongs to users)
 // Product
 module.exports = function(sequelize, DataTypes) {
   return sequelize.define('products', {

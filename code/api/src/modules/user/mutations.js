@@ -1,3 +1,6 @@
+//Since the user can update their shipping address, description, and image
+// We will need to add mutations to handle those changes
+
 // Imports
 import { GraphQLString, GraphQLInt } from 'graphql'
 

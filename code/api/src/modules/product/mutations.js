@@ -1,3 +1,7 @@
+// This file is utilized for the mutation of data in the database
+// Such as update, delete, and create
+// We will need to add a method in here to update the product that is returned
+// in the joins table between the user and the product
 // Imports
 import { GraphQLString, GraphQLInt } from 'graphql'
 

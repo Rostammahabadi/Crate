@@ -1,3 +1,7 @@
+// these are datatypes for the class types
+// used in queries to define what type of information can be passed in to the query
+// and what can be returned to the user
+
 // Imports
 import { GraphQLObjectType, GraphQLString, GraphQLInt } from 'graphql'
 

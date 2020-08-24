@@ -1,3 +1,4 @@
+// Migrations will need to be added to user for shippingAddress, description, image
 module.exports = {
   up: (queryInterface, Sequelize) => {
     return queryInterface.createTable('users', {

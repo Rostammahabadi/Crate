@@ -1,3 +1,5 @@
+// Since we are adding description, shipping address, and image we will need to
+//define those types here
 // Imports
 import { GraphQLObjectType, GraphQLString, GraphQLInt } from 'graphql'
 

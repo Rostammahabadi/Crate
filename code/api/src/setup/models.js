@@ -1,3 +1,6 @@
+// This will not need to be touched since Sequelize will create the
+// joins table for us and we don't need to create a new table
+
 // Imports
 import Sequelize from 'sequelize'
 
