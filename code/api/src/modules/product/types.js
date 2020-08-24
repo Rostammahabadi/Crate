@@ -1,4 +1,5 @@
 // Imports
+// list of data field data types for all the data fields for given ProductType and ProductTypesType whcih is somehow gender
 import { GraphQLObjectType, GraphQLString, GraphQLInt } from 'graphql'
 
 // Product type

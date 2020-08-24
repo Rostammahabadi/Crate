@@ -1,10 +1,11 @@
 // Imports
+// This describe any changes to parts of the database such as adding, updating, and removing products
 import { GraphQLString, GraphQLInt } from 'graphql'
 
 // App Imports
 import { ProductType } from './types'
 import { create, update, remove } from './resolvers'
-
+//creating a product of type ProductType with fields name, slug, description, types, gender, image
 // Product create
 export const productCreate = {
   type: ProductType,
@@ -41,7 +42,7 @@ export const productCreate = {
   },
   resolve: create
 }
-
+// updating a product with the same fields
 // Product update
 export const productUpdate = {
   type: ProductType,
@@ -83,7 +84,7 @@ export const productUpdate = {
   },
   resolve: update
 }
-
+// deleting a product of type ProductType
 // Product remove
 export const productRemove = {
   type: ProductType,

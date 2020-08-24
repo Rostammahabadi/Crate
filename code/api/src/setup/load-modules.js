@@ -1,4 +1,7 @@
 // Imports
+// Not to sure where this gets called yet
+// looks similar to gemfile
+// maybe setting up misc stuff?
 import express from 'express'
 import path from 'path'
 import cors from 'cors'

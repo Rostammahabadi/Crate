@@ -5,6 +5,7 @@ import Profile from '../../modules/user/Profile'
 import Subscriptions from '../../modules/user/Subscriptions'
 
 // User routes
+// routes file, points to different places, points to modules
 export default {
   login: {
     path: '/user/login',

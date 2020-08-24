@@ -18,7 +18,7 @@ export const PRODUCTS_GET_RELATED_LIST_RESPONSE = 'PRODUCTS/GET_RELATED_LIST_RES
 export const PRODUCTS_GET_RELATED_LIST_FAILURE = 'PRODUCTS/GET_RELATED_LIST_FAILURE'
 
 // Actions
-
+// returns list of products based on the given query it will return different fields
 // Get list of products
 export function getList(isLoading = true, forceRefresh = false) {
   return dispatch => {
@@ -27,7 +27,7 @@ export function getList(isLoading = true, forceRefresh = false) {
       error: null,
       isLoading
     })
-
+    // posts products and contains text for handling errors below.
     return axios.post(routeApi, query({
       operation: 'products',
       fields: ['id', 'name', 'slug', 'description', 'image', 'createdAt', 'updatedAt']
@@ -57,7 +57,9 @@ export function getList(isLoading = true, forceRefresh = false) {
       })
   }
 }
-
+// This action grabs a single product, less sure on the slug, it is a text value so maybe alt text
+// same as above, gives errors if request bad, otherwise returns object
+// might be getting product based on slug possibly
 // Get single product
 export function get(slug, isLoading = true) {
   return dispatch => {
@@ -117,8 +119,11 @@ export function getById(productId) {
 }
 
 // Get list of products related to a product
+// Gives a product based on a given id.
 export function getRelatedList(productId, isLoading = true) {
   return (dispatch, getState) => {
+    // this method seems to grab teh state from somewere perhaps in the state.js, maybe it inputs the type below to
+    // give a given state
     let state = getState()
 
     if (state.productsRelated.list.length === 0 || state.productId !== productId) {
@@ -161,7 +166,7 @@ export function getRelatedList(productId, isLoading = true) {
   }
 }
 
-// Create or update product
+// Create or update product, if id exists update product, otherwise delete product id and create a new product
 export function createOrUpdate(product) {
   if (product.id > 0) {
     return update(product)
@@ -172,6 +177,7 @@ export function createOrUpdate(product) {
 }
 
 // Create product
+// post a new prodjct to api
 export function create(product) {
   return dispatch => {
     return axios.post(routeApi, mutation({
@@ -183,6 +189,9 @@ export function create(product) {
 }
 
 // Update product
+// updte just like above, update must come from axios, the dispatch is what is passed to api, with operation
+// similar to a label, the variable is teh resource updated, and fields is what you update, or just teh id of teh product being
+// updated
 export function update(product) {
   return dispatch => {
     return axios.post(routeApi, mutation({
@@ -194,6 +203,7 @@ export function update(product) {
 }
 
 // Remove product
+// same style as above but for deleting
 export function remove(variables) {
   return dispatch => {
     return axios.post(routeApi, mutation({
@@ -205,6 +215,8 @@ export function remove(variables) {
 }
 
 // Get product types
+// sending a requst for product of id and name to the api, is it asking for thsoe that satify the fields or
+// saying just give me all products with the fields below. 
 export function getTypes() {
   return dispatch => {
     return axios.post(routeApi, query({

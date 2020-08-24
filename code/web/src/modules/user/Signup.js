@@ -1,5 +1,6 @@
 // Imports
 import React, { Component } from 'react'
+// PropTypes exports a range of validators that can be used to make sure the data you receive is valid
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { Link, withRouter } from 'react-router-dom'
@@ -24,7 +25,8 @@ import AuthCheck from '../auth/AuthCheck'
 
 // Component
 class Signup extends Component {
-
+// props unidirectional data based from parent to child
+// this gets data, sets state as empty, or default, then resets it upon signup using setState
   constructor(props) {
     super(props)
 
@@ -42,7 +44,7 @@ class Signup extends Component {
   onChange = (event) => {
     let user = this.state.user
     user[event.target.name] = event.target.value
-
+// part of react sets local state I think
     this.setState({
       user
     })

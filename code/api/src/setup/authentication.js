@@ -1,4 +1,5 @@
 // Imports
+// Authentication stuff, might look into later, but looks like this is the authentication logic
 import jwt from 'jsonwebtoken'
 import serverConfig from '../config/server.json'
 

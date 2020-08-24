@@ -1,4 +1,5 @@
 // Imports
+// this loads environment variable, pretty useful for api calls, might need this later
 import dotenv from 'dotenv'
 
 // Load .env

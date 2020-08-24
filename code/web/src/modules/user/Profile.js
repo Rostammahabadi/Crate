@@ -1,8 +1,13 @@
 // Imports
+// Import a bunch of stuff, react obious
 import React from 'react'
+// PropTypes exports a range of validators that can be used to make sure the data you receive is valid
 import PropTypes from 'prop-types'
+// more stuff
 import { connect } from 'react-redux'
+// This reusable React component will manage all of your changes to the document head.
 import { Helmet } from 'react-helmet'
+// Somehow relates to routing
 import { Link } from 'react-router-dom'
 
 // UI Imports

@@ -2,6 +2,8 @@
 import graphqlHTTP from 'express-graphql'
 
 // App Imports
+// This grabs all the queries and mutations with their resolvers and the models in addition to authentication info
+// in addition where to setup up server, so this is like a master file that sets up everything for backend graphql
 import serverConfig from '../config/server.json'
 import authentication from './authentication'
 import schema from './schema'
