@@ -16,6 +16,7 @@ import userRoutes from '../../setup/routes/user'
 import { logout } from './api/actions'
 
 // Component
+// It is possible we are going to need to change this to a "Class Component" in order to add buttons to alter the state 
 const Profile = (props) => (
   <div>
     {/* SEO */}
