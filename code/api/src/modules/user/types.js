@@ -1,6 +1,7 @@
 // Imports
 import { GraphQLObjectType, GraphQLString, GraphQLInt , GraphQLList } from 'graphql'
 import { ProductType } from '../product/types'
+import { UserProductsType } from '../user_product/types'
 // User type
 const UserType = new GraphQLObjectType({
   name: 'user',
@@ -17,7 +18,8 @@ const UserType = new GraphQLObjectType({
     role: { type: GraphQLString },
     createdAt: { type: GraphQLString },
     updatedAt: { type: GraphQLString },
-    products: { type: new GraphQLList(ProductType) }
+    products: { type: new GraphQLList(ProductType) },
+    userProduct: { type: new GraphQLList(UserProductsType)}
   })
 })
 
