@@ -12,3 +12,4 @@ const UserProductsType = new GraphQLObjectType({
     kept: { type: GraphQLBoolean}
   })
 })
+export { UserProductsType }
