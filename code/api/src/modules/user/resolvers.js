@@ -96,7 +96,7 @@ export async function getById(parentValue, { id }) {
     where: { id },
     include: [
     { model: models.Product, as: 'products' },
-    { model: models.UserProduct, as: 'kept'}
+    { model: models.UserProduct, as: 'userProduct'}
   ]
    })
 }
