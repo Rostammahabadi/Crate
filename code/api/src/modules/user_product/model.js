@@ -18,8 +18,8 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.DATE
     }
   })
-  UserProduct.associate = function (models) {
-    UserProduct.belongsTo(models.User)
+  UserProduct.associate = function(models){
+    UserProduct.belongsTo(models.User, { foreignKey: 'userId'} )
     UserProduct.belongsTo(models.Product)
   }
   return UserProduct
