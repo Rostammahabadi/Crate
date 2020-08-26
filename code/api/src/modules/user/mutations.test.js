@@ -21,20 +21,6 @@ describe('user mutations',  () => {
     )
   })
 
- //  beforeEach(async() => {
- //   const rubeusHagrid = {
- //     id: 1,
- //     name: "Rubeus Hagrid",
- //     email: "grounds@hogwarts.com",
- //     password: bcrypt.hashSync('buckbeak', 10),
- //     role: "USER",
- //     createdAt: new Date(),
- //     updatedAt: new Date(),
- //   };
- //
- //   await models.User.create(rubeusHagrid);
- // })
-
  afterEach(async() => {
    await models.User.destroy({ where: {}})
  })
