@@ -95,7 +95,7 @@ export async function getById(parentValue, { id }) {
   return await models.User.findOne({
     where: { id },
     include: [
-    { model: models.UserProduct, as: 'user_product' }
+    { model: models.Product, as: 'products' }
   ]
    })
 }
