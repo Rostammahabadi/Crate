@@ -11,9 +11,6 @@ import { H3, H4 } from '../../ui/typography'
 import Button from '../../ui/button'
 import { grey, grey2 } from '../../ui/common/colors'
 // import avatar from '../../../public/images/blank-avatar.png' 
-import { Input } from '../../ui/input/Input'
-import UploadImage from '../user/UploadImage'
-
 
 // App Imports
 import userRoutes from '../../setup/routes/user'
@@ -21,20 +18,6 @@ import { logout } from './api/actions'
 
 // Component
 const Profile = (props) => {
-  // const [profileImage, setProfileImage] = useState("")
-  // const [user, setUser] = useState({})
-
-  // useEffect(() => {
-  //   setUser({
-  //     name: props.user.details.name,
-  //     email: props.user.details.name,
-  //     address: "",
-  //     bio: "",
-  //     image: profileImage,
-  //   })
-  // }, [user])
- // ^^ does this need a subscriptions array?
- // ^^ does this need a purchases array? 
 
  return (
   <div>
