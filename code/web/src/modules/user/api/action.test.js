@@ -85,9 +85,6 @@ describe('Actions', () => {
   //   axios.get.mockImplementationOnce(() => Promise.resolve(data));
   // });
 
-
-
-
   it.skip('Should process user logout', () => {
     // on user logout
     // state should change for user.details to undefined/null\

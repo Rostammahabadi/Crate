@@ -13,7 +13,6 @@ export const SET_USER = 'AUTH/SET_USER'
 export const LOGOUT = 'AUTH/LOGOUT'
 
 // Actions
-
 // Set a user after login or using localStorage token
 export function setUser(token, user) {
   if (token) {

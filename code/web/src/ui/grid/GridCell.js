@@ -16,7 +16,7 @@ const GridCell = (props) => {
   } = props
 
   return (
-    <div {...others}>
+    <div {...others} >
       {children}
 
       {/* language=CSS */}
