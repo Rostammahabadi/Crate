@@ -12,7 +12,6 @@ module.exports = {
     	})
   	]);
 	},
-
 	down: function (queryInterface, Sequelize) {
   	return Promise.all([
       queryInterface.removeColumn('users', 'description'),
