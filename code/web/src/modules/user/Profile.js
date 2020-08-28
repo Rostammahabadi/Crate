@@ -169,8 +169,6 @@ const Profile = (props) => {
       </section>
       <section className="user-orders" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', width: '100vw', flexDirection: 'column' }}>
         <p style={{width: '20vw', paddingLeft: '1em', textDecoration: 'underline', fontSize: '3vh', paddingTop: '1em'}}>Returns and Orders</p>
-
-        {/* conditionally render if there are orders array is empty */}
         <table style={{ marginTop: '1em', width: '85vw' }}>
           <tbody>
             <tr style={{ fontStyle: 'italic' }}>
@@ -179,24 +177,9 @@ const Profile = (props) => {
               <th>Status</th>
             </tr>
             <tr>
-              <th>Some date</th>
-              <th>One of stuff</th>
-              <th>TBD</th>
-            </tr>
-            <tr>
-              <th>Other date</th>
-              <th>One of other stuff</th>
-              <th>TBD</th>
-            </tr>
-            <tr>
-              <th>Yet another date</th>
-              <th>So much stuff</th>
-              <th>TBD</th>
-            </tr>
-            <tr>
-              <th>I eat dates</th>
-              <th>Stuffing myself</th>
-              <th>TBD</th>
+              <th></th>
+              <th></th>
+              <th></th>
             </tr>
           </tbody>
         </table>
