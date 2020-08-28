@@ -1,3 +1,7 @@
 .idea/
 web/coverage/
 node_modules/
+<<<<<<< HEAD
+=======
+database.json
+>>>>>>> bc76b01835e0d2534f8253b286ac36c2cffad499
