@@ -69,6 +69,7 @@ export function getListByUser(isLoading = true) {
     }))
       .then(response => {
         if (response.status === 200) {
+          console.log(response, 'response for length')
           dispatch({
             type: SUBSCRIPTIONS_GET_LIST_BY_USER_RESPONSE,
             error: null,
