@@ -37,7 +37,6 @@ export const userRemove = {
     }
   },
   resolve: remove
-<<<<<<< HEAD
 }
 
 // Update Email
@@ -87,6 +86,3 @@ export const updateImage = {
   },
   resolve: updateImageResolver
 }
-=======
-}
->>>>>>> main
