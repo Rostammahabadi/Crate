@@ -103,7 +103,13 @@ export async function updateImageResolver(parentValue, { id, address }, { auth }
 
 // Get by ID
 export async function getById(parentValue, { id }) {
-  return await models.User.findOne({ where: { id } })
+  return await models.User.findOne({
+    where: { id },
+    include: [
+    { model: models.Product, as: 'products' },
+    { model: models.UserProduct, as: 'userProduct'}
+  ]
+   })
 }
 
 // Get all
