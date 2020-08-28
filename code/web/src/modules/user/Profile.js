@@ -1,9 +1,10 @@
 // Imports
-import React, { useState, useEffect } from 'react'
+import React, { Fragment, useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { Helmet } from 'react-helmet'
 import { Link } from 'react-router-dom'
+import moment from 'moment'
 
 // UI Imports
 import { Grid, GridCell } from '../../ui/grid'
@@ -18,6 +19,10 @@ import { logout } from './api/actions'
 
 // Component
 const Profile = (props) => {
+  // import moment already installed to calculate date from string
+  // access subscription by user from store
+  // description , image , address
+
   const [ img, setImg ] = useState('')
   const [ newImg, setNewImg ] = useState('')
   const [ isEditingImg, setIsEditingImg ] = useState(false)
@@ -27,6 +32,7 @@ const Profile = (props) => {
   const [ isEditingAddress, setIsEditingAddress ] = useState(false)
   const [ bio, setBio ] = useState('')
   const [ isEditingBio, setIsEditingBio ] = useState(false)
+  const [ subscriptions, setSubscriptions ] = useState([])
 
   const selectNewImage = (e) => {
     setNewImg(e.target.value)
@@ -50,11 +56,41 @@ const Profile = (props) => {
   const updateBio = (e) => {
     setBio(e.target.value)
   }
-  
-  // not working as expected
-  // useEffect(() => {
-  //   setEmail(props.user.details.email)
-  // }, [ ])
+
+  const dateTranslate = () => {
+    let subscriptionDate = moment(props.subscriptions.list[0].crate.createdAt)
+    let deliveryDate = subscriptionDate.add('30', 'days').format('YYYY/MM/DD')
+    return deliveryDate
+  }
+
+  const displaySubscriptions = () => {
+    let subscriptions = props.subscriptions.list
+    if (subscriptions.length === 0) {
+      return (
+        <>
+          <p style={{ marginBottom: '0.5em' }}>Please subscribe</p>
+          <p style={{ marginBottom: '0.5em' }}>No pending deliveries</p>
+        </>
+      )
+    } else {
+      return subscriptions.map(sub => {
+        return (
+          <>
+            <p style={{ marginBottom: '0.5em' }}>{sub.crate.name}</p>
+            <p style={{ marginBottom: '0.5em' }}>{dateTranslate()}</p>
+          </>
+        )
+      })
+    }
+  }
+
+  useEffect(() => {
+    setEmail(props.user.details.email)
+    setAddress(props.user.details.address)
+    setBio(props.user.details.description)
+    setImg(props.user.details.image)
+    setSubscriptions(props.subscriptions.list)
+  }, [])
 
  return (
   <div>
@@ -68,7 +104,6 @@ const Profile = (props) => {
         <H3 font="secondary">My profile</H3>
       </GridCell>
     </Grid>
-
     <Grid>
       <section style={{ display: 'flex', justifyContent: 'center', borderBottom: '5px solid #f0f0f0', paddingBottom: '2em' }}>
         <section style={{
@@ -78,7 +113,6 @@ const Profile = (props) => {
           alignItems: 'center',
           padding: '1em',
           justifyContent: 'center',
-          // borderRight: '3px solid grey',
           flexDirection: 'column'
         }}>
           <img src={!img ? "https://history.ucr.edu/sites/g/files/rcwecm1916/files/styles/form_preview/public/blank-profile-picture-png.png?itok=MQ-iPuNG" : img} alt="profile-image" width="300" />
@@ -91,14 +125,13 @@ const Profile = (props) => {
             display: 'flex',
             alignItems: 'center',
             flexDirection: 'column',
-            // border: '1px solid blue',
             justifyContent: 'center',
         }}>
-          {/* conditionally render H3 depending on array of subscriptions being empty or not */}
-
           <section className="date-container" style={{ textAlign: 'center', height: '42%' }}>
-            <H3 style={{ marginBottom: '0.5em', paddingTop: '1em' }}>Upcoming Delivery:</H3>
-            <H3 style={{ marginBottom: '0.5em' }}>2020/10/10</H3>
+            <p style={{ marginBottom: '0.5em', paddingTop: '1em' }}>Upcoming Delivery:</p>
+            <section style={{ maxHeight: '15vh', width: '22vw', background: '#f0f0f0', overflow: 'scroll', padding: '.5vh', borderRadius: '1vh' }}>
+              { displaySubscriptions() }
+            </section>
           </section>
           <section className="user-details-box" style={{ textAlign: 'center', height: '50%' }}>
             <H4 style={{ marginBottom: '0.5em' }}>{props.user.details.name}</H4>
@@ -111,7 +144,6 @@ const Profile = (props) => {
         <section 
           className="user-description-box"
           style={{
-            // borderLeft: '2px solid grey',
             width: '34vw',
             alignItems: 'center',
             display: 'flex',
@@ -137,6 +169,7 @@ const Profile = (props) => {
       </section>
       <section className="user-orders" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', width: '100vw', flexDirection: 'column' }}>
         <p style={{width: '20vw', paddingLeft: '1em', textDecoration: 'underline', fontSize: '3vh', paddingTop: '1em'}}>Returns and Orders</p>
+
         {/* conditionally render if there are orders array is empty */}
         <table style={{ marginTop: '1em', width: '85vw' }}>
           <tbody>
@@ -181,7 +214,8 @@ Profile.propTypes = {
 // Component State
 function profileState(state) {
   return {
-    user: state.user
+    user: state.user,
+    subscriptions: state.subscriptionsByUser
   }
 }
 
