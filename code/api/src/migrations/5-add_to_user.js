@@ -8,11 +8,10 @@ module.exports = {
     	type: Sequelize.STRING
     	}),
     	queryInterface.addColumn('users', 'image',{
-    	type: Sequelize.BLOB
+    	type: Sequelize.STRING
     	})
   	]);
 	},
-
 	down: function (queryInterface, Sequelize) {
   	return Promise.all([
       queryInterface.removeColumn('users', 'description'),

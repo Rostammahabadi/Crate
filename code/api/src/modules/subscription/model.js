@@ -8,6 +8,9 @@ module.exports = function(sequelize, DataTypes) {
     },
     crateId: {
       type: DataTypes.INTEGER
+    },
+    nextOrder: {
+      type: DataTypes.STRING
     }
   })
 

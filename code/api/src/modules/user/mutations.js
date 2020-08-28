@@ -3,7 +3,7 @@ import { GraphQLString, GraphQLInt } from 'graphql'
 
 // App Imports
 import { UserType } from './types'
-import { create, remove , update} from './resolvers'
+import { create, remove , updateEmailResolver, updateAddressResolver, updateImageResolver} from './resolvers'
 
 // Create
 export const userSignup = {
@@ -52,7 +52,7 @@ export const updateEmail = {
       type: GraphQLString
     }
   },
-  resolve: updateEmail
+  resolve: updateEmailResolver
 }
 
 // Update Address
@@ -68,5 +68,21 @@ export const updateAddress = {
       type: GraphQLString
     }
   },
-  resolve: updateAddress
+  resolve: updateAddressResolver
+}
+
+// Upload Image
+export const updateImage = {
+  type: UserType,
+  args: {
+    id: {
+      name: 'id',
+      type: GraphQLInt
+    },
+    image: {
+      image: 'image',
+      type: GraphQLString
+    }
+  },
+  resolve: updateImageResolver
 }
