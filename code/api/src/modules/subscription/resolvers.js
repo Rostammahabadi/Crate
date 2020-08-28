@@ -59,3 +59,15 @@ export async function remove(parentValue, { id }, { auth }) {
     throw new Error('Access denied.')
   }
 }
+
+// Update nextOrder
+export async function updateNextOrder(parentValue, { nextOrder, user, crate }, { auth }) {
+  if(auth.user && auth.user.id > 0) {
+    return await models.Subscription.update(
+      {
+        nextOrder
+      },
+      { where: { userID: user, crateID: crate} }
+    )
+  }
+}

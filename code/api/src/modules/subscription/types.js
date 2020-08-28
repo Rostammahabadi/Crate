@@ -1,6 +1,5 @@
 // Imports
 import { GraphQLObjectType, GraphQLString, GraphQLInt } from 'graphql'
-
 // App Imports
 import { UserType } from '../user/types'
 import CrateType from '../crate/types'
@@ -15,7 +14,8 @@ const SubscriptionType = new GraphQLObjectType({
     user: { type: UserType },
     crate: { type: CrateType },
     createdAt: { type: GraphQLString },
-    updatedAt: { type: GraphQLString }
+    updatedAt: { type: GraphQLString },
+    nextOrder: { type: GraphQLString }
   })
 })
 
