@@ -7,8 +7,6 @@ describe('Reducers', () => {
   let nullValue, falseValue, user, user1;
   
   beforeEach(() => {
-    nullValue = null
-    falseValue = false
     user = {}
     user1 = {
       error: null,
@@ -20,22 +18,22 @@ describe('Reducers', () => {
 
   it('should set initial state for error', () => {
     const currentState = state(undefined, {})
-    expect(currentState.error).toEqual(nullValue)
+    expect(currentState.error).toEqual(null)
   })
 
   it('should set initial state of isLoading', () => {
     const currentState = state(undefined, {})
-    expect(currentState.isLoading).toEqual(falseValue)
+    expect(currentState.isLoading).toEqual(false)
   })
 
   it('should set initial state of isAuthenticated', () => {
     const currentState = state(undefined, {})
-    expect(currentState.isAuthenticated).toEqual(falseValue)
+    expect(currentState.isAuthenticated).toEqual(false)
   })
 
   it('should set details default value', () => {
     const currentState = state(undefined, {})
-    expect(currentState.details).toEqual(nullValue)
+    expect(currentState.details).toEqual(null)
   })
 
   it('should set user default value', () => {
