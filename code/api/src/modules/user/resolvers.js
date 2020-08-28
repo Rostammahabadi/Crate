@@ -58,39 +58,7 @@ export async function login(parentValue, { email, password }) {
   }
 }
 
-// Update Email
-export async function updateEmail(parentValue, { id, email }, { auth }) {
-  if(auth.user){
-    return await models.User.update(
-      {
-      email
-    },
-      { where: { id } }
-    )
-  } else {
-    throw new Error('Operation denied.')
-  }
-}
-
-// Update address
-export async function updateAddress(parentValue, { id, address }, { auth }) {
-  if(auth.user){
-    return await models.User.update(
-      {
-        address
-      },
-      { where: { id } }
-    )
-  } else {
-    throw new Error('Operation denied.')
-  }
-}
-
 // Get by ID
-// export async function getById(parentValue, { id }) {
-//   return await models.User.findOne({ where: { id } })
-// }
-
 export async function getById(parentValue, { id }) {
   return await models.User.findOne({
     where: { id },
