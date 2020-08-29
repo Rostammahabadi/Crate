@@ -13,14 +13,12 @@ export const SET_USER = 'AUTH/SET_USER'
 export const LOGOUT = 'AUTH/LOGOUT'
 
 // Actions
-// Set a user after login or using localStorage token
 export function setUser(token, user) {
   if (token) {
     axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
   } else {
     delete axios.defaults.headers.common['Authorization'];
   }
-
   return { type: SET_USER, user }
 }
 
@@ -135,18 +133,19 @@ export function submitAddress(id, address) {
 }
 
 // Update User
-export function updateUser({id, email, address, image, description}) {
-  // return dispatch => {
+
+export function updateUser(user) {
+  return dispatch => {
     return axios.post(routeApi, mutation({
       operation: 'updateUser',
-      variables: {id, email, address, image, description},
+      variables: user,
       fields: ['id', 'email', 'address', 'image', 'description']
     }))
     .then(response => {
+      console.log(response, 'what the heck')
       const user = response.data.data.updateUser
       const token = window.localStorage.getItem('token')
-      // dispatch(setUser(token, user))
-      setUser(token, user)
+      dispatch(setUser(token, user))
     })
-  // }
+  }
 }

@@ -16,7 +16,7 @@ import { Input } from '../../ui/input'
 
 // App Imports
 import userRoutes from '../../setup/routes/user'
-import { logout, setUser, submitAddress, updateUser } from './api/actions'
+import { logout, submitAddress, updateUser } from './api/actions'
 
 // Component
 const Profile = (props) => {
@@ -39,16 +39,6 @@ const Profile = (props) => {
   const updateImage = () => {
     setImage(newImg)
     setIsEditingImg(!isEditingImg)
-    if (isEditingImg) {
-      let newUser = {
-        id,
-        email,
-        address,
-        image,
-        description
-      }
-      updateUser(newUser)
-    }
   }
   
   const selectNewEmail = (e) => {
@@ -76,21 +66,11 @@ const Profile = (props) => {
     image,
     description
   }
-  updateUser(newUser)
+  props.updateUser(newUser)
  }
 
   const updateEmail = () => {
     setIsEditingEmail(!isEditingEmail)
-    if(isEditingEmail) {
-      let newUser = {
-        id,
-        email,
-        address,
-        image,
-        description
-      }
-      updateUser(newUser)
-    }
   }
 
   const dateTranslate = () => {
@@ -241,4 +221,4 @@ function profileState(state) {
   }
 }
 
-export default connect(profileState, { setUser, logout, submitAddress, updateUser })(Profile)
+export default connect(profileState, { logout, submitAddress, updateUser })(Profile)
