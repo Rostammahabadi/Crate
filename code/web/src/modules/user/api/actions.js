@@ -13,14 +13,12 @@ export const SET_USER = 'AUTH/SET_USER'
 export const LOGOUT = 'AUTH/LOGOUT'
 
 // Actions
-// Set a user after login or using localStorage token
 export function setUser(token, user) {
   if (token) {
     axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
   } else {
     delete axios.defaults.headers.common['Authorization'];
   }
-
   return { type: SET_USER, user }
 }
 
@@ -35,7 +33,7 @@ export function login(userCredentials, isLoading = true) {
     return axios.post(routeApi, query({
       operation: 'userLogin',
       variables: userCredentials,
-      fields: ['user {name, email, role}', 'token']
+      fields: ['user {id, name, email, description, image, address}', 'token']
     }))
       .then(response => {
         let error = ''
@@ -114,5 +112,40 @@ export function getGenders() {
       operation: 'userGenders',
       fields: ['id', 'name']
     }))
+  }
+}
+
+// Submit New Address
+export function submitAddress(id, address) {
+  // return dispatch => {
+    return axios.post(routeApi, mutation({
+      operation: 'updateAddress',
+      variables: {id, address},
+      fields: ['id', 'address']
+    }))
+    .then(response => {
+      console.log(response, 'RESPONSE IN ACTIONS')
+      const user = response.data.data.userAddress
+      const token = window.localStorage.getItem('token')
+      dispatch(setUser(token, user))
+    })
+  // }
+}
+
+// Update User
+
+export function updateUser(user) {
+  return dispatch => {
+    return axios.post(routeApi, mutation({
+      operation: 'updateUser',
+      variables: user,
+      fields: ['id', 'email', 'address', 'image', 'description']
+    }))
+    .then(response => {
+      console.log(response, 'what the heck')
+      const user = response.data.data.updateUser
+      const token = window.localStorage.getItem('token')
+      dispatch(setUser(token, user))
+    })
   }
 }

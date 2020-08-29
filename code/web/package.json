@@ -48,6 +48,7 @@
     "express": "5.0.0-alpha.7",
     "gql-query-builder": "3.3.0",
     "js-cookie": "^2.2.1",
+    "moment": "^2.27.0",
     "morgan": "1.10.0",
     "prop-types": "^15.7.2",
     "react": "16.13.1",
@@ -59,6 +60,7 @@
     "redux-devtools-extension": "^2.13.8",
     "redux-thunk": "^2.3.0",
     "styled-jsx": "3.2.5",
+    "uuid": "^8.3.0",
     "validator": "13.0.0"
   }
 }
