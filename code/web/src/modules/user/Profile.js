@@ -66,17 +66,18 @@ const Profile = (props) => {
 
   const updateAddress = () => {
     setIsEditingAddress(!isEditingAddress)
-    if (isEditingAddress) {
-      let newUser = {
-        id,
-        email,
-        address,
-        image,
-        description
-      }
-      updateUser(newUser)
-    }
   }
+
+ const updateAll = () => {
+  let newUser = {
+    id,
+    email,
+    address,
+    image,
+    description
+  }
+  updateUser(newUser)
+ }
 
   const updateEmail = () => {
     setIsEditingEmail(!isEditingEmail)
@@ -152,6 +153,7 @@ const Profile = (props) => {
           justifyContent: 'center',
           flexDirection: 'column'
         }}>
+           <Button theme="primary" onClick={() => updateAll()} style={{ marginTop: '1em', marginBottom: '1em' }}>Update Profile</Button>
           <img src={!image ? "https://history.ucr.edu/sites/g/files/rcwecm1916/files/styles/form_preview/public/blank-profile-picture-png.png?itok=MQ-iPuNG" : image} alt="profile-image" width="300" />
           { isEditingImg && <Input type="text" onChange={(e) => selectNewImage(e)} placeholder="Image URL here..." style={{ width: '85%', height: '10%', marginTop: '1em'}}></Input> }
           <Button theme="primary" onClick={() => updateImage()} style={{ marginTop: '1em' }}>{ isEditingImg ? 'Update Image' : 'Edit' }</Button>
