@@ -35,7 +35,7 @@ export function login(userCredentials, isLoading = true) {
     return axios.post(routeApi, query({
       operation: 'userLogin',
       variables: userCredentials,
-      fields: ['user {name, email}', 'token']
+      fields: ['user {id, name, email, description, image, address}', 'token']
     }))
       .then(response => {
         let error = ''
@@ -115,4 +115,38 @@ export function getGenders() {
       fields: ['id', 'name']
     }))
   }
+}
+
+// Submit New Address
+export function submitAddress(id, address) {
+  // return dispatch => {
+    return axios.post(routeApi, mutation({
+      operation: 'updateAddress',
+      variables: {id, address},
+      fields: ['id', 'address']
+    }))
+    .then(response => {
+      console.log(response, 'RESPONSE IN ACTIONS')
+      const user = response.data.data.userAddress
+      const token = window.localStorage.getItem('token')
+      dispatch(setUser(token, user))
+    })
+  // }
+}
+
+// Update User
+export function updateUser({id, email, address, image, description}) {
+  // return dispatch => {
+    return axios.post(routeApi, mutation({
+      operation: 'updateUser',
+      variables: {id, email, address, image, description},
+      fields: ['id', 'email', 'address', 'image', 'description']
+    }))
+    .then(response => {
+      const user = response.data.data.updateUser
+      const token = window.localStorage.getItem('token')
+      // dispatch(setUser(token, user))
+      setUser(token, user)
+    })
+  // }
 }

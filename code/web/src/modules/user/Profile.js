@@ -5,6 +5,7 @@ import { connect } from 'react-redux'
 import { Helmet } from 'react-helmet'
 import { Link } from 'react-router-dom'
 import moment from 'moment'
+import { v4 as uuidv4 } from 'uuid';
 
 // UI Imports
 import { Grid, GridCell } from '../../ui/grid'
@@ -15,22 +16,19 @@ import { Input } from '../../ui/input'
 
 // App Imports
 import userRoutes from '../../setup/routes/user'
-import { logout } from './api/actions'
+import { logout, setUser, submitAddress, updateUser } from './api/actions'
 
 // Component
 const Profile = (props) => {
-  // import moment already installed to calculate date from string
-  // access subscription by user from store
-  // description , image , address
-
-  const [ img, setImg ] = useState('')
+  const [ id, setId ] = useState('')
+  const [ image, setImage ] = useState('')
   const [ newImg, setNewImg ] = useState('')
   const [ isEditingImg, setIsEditingImg ] = useState(false)
   const [ email, setEmail ] = useState('')
   const [ isEditingEmail, setIsEditingEmail ] = useState(false)
   const [ address, setAddress ] = useState('')
   const [ isEditingAddress, setIsEditingAddress ] = useState(false)
-  const [ bio, setBio ] = useState('')
+  const [ description, setDescription ] = useState('')
   const [ isEditingBio, setIsEditingBio ] = useState(false)
   const [ subscriptions, setSubscriptions ] = useState([])
 
@@ -39,9 +37,18 @@ const Profile = (props) => {
   }
 
   const updateImage = () => {
+    setImage(newImg)
     setIsEditingImg(!isEditingImg)
-    setImg(newImg)
-    setNewImg('')
+    if (isEditingImg) {
+      let newUser = {
+        id,
+        email,
+        address,
+        image,
+        description
+      }
+      updateUser(newUser)
+    }
   }
   
   const selectNewEmail = (e) => {
@@ -54,7 +61,35 @@ const Profile = (props) => {
   }
 
   const updateBio = (e) => {
-    setBio(e.target.value)
+    setDescription(e.target.value)
+  }
+
+  const updateAddress = () => {
+    setIsEditingAddress(!isEditingAddress)
+    if (isEditingAddress) {
+      let newUser = {
+        id,
+        email,
+        address,
+        image,
+        description
+      }
+      updateUser(newUser)
+    }
+  }
+
+  const updateEmail = () => {
+    setIsEditingEmail(!isEditingEmail)
+    if(isEditingEmail) {
+      let newUser = {
+        id,
+        email,
+        address,
+        image,
+        description
+      }
+      updateUser(newUser)
+    }
   }
 
   const dateTranslate = () => {
@@ -74,11 +109,12 @@ const Profile = (props) => {
       )
     } else {
       return subscriptions.map(sub => {
+        let ident = uuidv4()
         return (
-          <>
+          <React.Fragment key={ident}>
             <p style={{ marginBottom: '0.5em' }}>{sub.crate.name}</p>
             <p style={{ marginBottom: '0.5em' }}>{dateTranslate()}</p>
-          </>
+          </React.Fragment>
         )
       })
     }
@@ -87,9 +123,10 @@ const Profile = (props) => {
   useEffect(() => {
     setEmail(props.user.details.email)
     setAddress(props.user.details.address)
-    setBio(props.user.details.description)
-    setImg(props.user.details.image)
+    setDescription(props.user.details.description)
+    setImage(props.user.details.image)
     setSubscriptions(props.subscriptions.list)
+    setId(props.user.details.id)
   }, [])
 
  return (
@@ -115,7 +152,7 @@ const Profile = (props) => {
           justifyContent: 'center',
           flexDirection: 'column'
         }}>
-          <img src={!img ? "https://history.ucr.edu/sites/g/files/rcwecm1916/files/styles/form_preview/public/blank-profile-picture-png.png?itok=MQ-iPuNG" : img} alt="profile-image" width="300" />
+          <img src={!image ? "https://history.ucr.edu/sites/g/files/rcwecm1916/files/styles/form_preview/public/blank-profile-picture-png.png?itok=MQ-iPuNG" : image} alt="profile-image" width="300" />
           { isEditingImg && <Input type="text" onChange={(e) => selectNewImage(e)} placeholder="Image URL here..." style={{ width: '85%', height: '10%', marginTop: '1em'}}></Input> }
           <Button theme="primary" onClick={() => updateImage()} style={{ marginTop: '1em' }}>{ isEditingImg ? 'Update Image' : 'Edit' }</Button>
         </section>
@@ -136,9 +173,9 @@ const Profile = (props) => {
           <section className="user-details-box" style={{ textAlign: 'center', height: '50%' }}>
             <H4 style={{ marginBottom: '0.5em' }}>{props.user.details.name}</H4>
             { isEditingEmail ? <Input type="text" onChange={(e) => selectNewEmail(e)} placeholder="New email here..." style={{ width: '85%', height: '10%' }}></Input> : <p style={{ color: grey2, marginBottom: '.5em' }}>{!email ? props.user.details.email : email}</p> }
-            <Button theme="primary" onClick={() => setIsEditingEmail(!isEditingEmail)} style={{ marginBottom: '1em', marginTop: '.5em' }}>{ isEditingEmail ? 'Update Email' : 'Edit'}</Button>
+            <Button theme="primary" onClick={() => updateEmail()} style={{ marginBottom: '1em', marginTop: '.5em' }}>{ isEditingEmail ? 'Update Email' : 'Edit'}</Button>
             { isEditingAddress ? <Input type="text" onChange={(e) => selectNewAddress(e)} placeholder="New address here..." style={{ width: '85%', height: '10%', marginTop: '.5em' }}></Input> : <p style={{ color: grey2, marginTop: '.5em', marginBottom: '.5em' }}>{ !address ? 'Please update address' : address }</p> }
-            <Button theme="primary" onClick={() => setIsEditingAddress(!isEditingAddress)} style={{ marginTop: '1em' }}>{ isEditingAddress ? 'Update Address' : 'Edit'}</Button>
+            <Button theme="primary" onClick={() => updateAddress()} style={{ marginTop: '1em' }}>{ isEditingAddress ? 'Update Address' : 'Edit'}</Button>
           </section>
         </section>
         <section 
@@ -163,7 +200,7 @@ const Profile = (props) => {
             </Link>
             <Button theme="secondary" onClick={props.logout} style={{ marginLeft: '1em' }}>Logout</Button>
           </section>
-          { isEditingBio ? <textarea onChange={(e) => updateBio(e)} style={{ width: '30vw', height: '32vh', resize: 'none', marginTop: '2em', placeholder: 'About me...' }}>{bio}</textarea> : <p style={{ width: '30vw', height: '32vh', marginTop: '2em', background: '#f0f0f0', display: 'flex', justifyContent: 'center', alignItems: 'center', borderRadius: '1vh', padding: '1vh' }}>{ !bio ? "Add Personal Description" : bio }</p>}
+          { isEditingBio ? <textarea onChange={(e) => updateBio(e)} style={{ width: '30vw', height: '32vh', resize: 'none', marginTop: '2em', placeholder: 'About me...' }}>{description}</textarea> : <p style={{ width: '30vw', height: '32vh', marginTop: '2em', background: '#f0f0f0', display: 'flex', justifyContent: 'center', alignItems: 'center', borderRadius: '1vh', padding: '1vh' }}>{ !description ? "Add Personal Description" : description }</p>}
           <Button theme="primary" onClick={() => setIsEditingBio(!isEditingBio)} style={{ marginTop: '.5em' }}>{ isEditingBio ? 'Update Bio': 'Edit'}</Button>
         </section>
       </section>
@@ -202,4 +239,4 @@ function profileState(state) {
   }
 }
 
-export default connect(profileState, { logout })(Profile)
+export default connect(profileState, { setUser, logout, submitAddress, updateUser })(Profile)

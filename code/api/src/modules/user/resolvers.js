@@ -75,13 +75,12 @@ export async function updateEmailResolver(parentValue, { id, email }, { auth }) 
   }
 }
 
-
-// Update address
-export async function updateAddressResolver(parentValue, { id, address }, { auth }) {
+// Update Description
+export async function updateDescriptionResolver(parentValue, { id, description }, { auth }) {
   if(auth.user && auth.user.id > 0){
     return await models.User.update(
       {
-        address
+        description
       },
       { where: { id } }
     )
@@ -128,4 +127,23 @@ export async function remove(parentValue, { id }) {
 // User genders
 export async function getGenders() {
   return Object.values(params.user.gender)
+}
+
+// Option for Update User Resolver
+export async function updateUserResolver(parentValue, { id, email, address, image, description }, { auth }) {
+  if(auth.user && auth.user.id > 0) {
+    await models.User.update(
+      {
+        id,
+        email,
+        address,
+        image,
+        description
+      },
+      { where: { id } }
+    )
+    return getById(parentValue, { id })
+  } else {
+    throw new Error('Operation denied.')
+  }
 }
