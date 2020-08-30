@@ -101,7 +101,10 @@ Click on image to view fullscreen and zoom
 - Clone repo `git clone git@github.com:atulmy/crate.git crate`
 - Switch to `code` directory `cd code`
 - Configurations
-  - Modify `/api/src/config/database.json` for database credentials
+  - Type `psql` in your terminal to access the postgres command line interface (CLI)
+  - Check your available postgres users by running `\du` in the postgres CLI
+  - Choose one of the names to put as your username in `/api/src/config/database.json`
+  - Create your database locally by running `CREATE DATABASE crate;` in the postgres CLI
   - Modify `/api/.env` for PORT (optional)
   - Modify `/web/.env` for PORT / API URL (optional)
   - Modify `/mobile/src/setup/config.json` for API URL (tip: use `ifconfig` to get your local IP address)
@@ -111,8 +114,9 @@ Click on image to view fullscreen and zoom
   - Mobile: 
     1. Install packages `cd mobile` and `npm install`
     2. Install iOS dependencies `cd mobile/ios` `pod install`
-- Development
+- Development (to run the API and Webapp with a single command see "Multi-package automation)
   - Run API `cd api` and `npm start`, browse GraphiQL at http://localhost:8000/
+    - Are you asking yourself "How do I browse GraphiQL?" Have no fear! [This](https://www.digitalocean.com/community/tutorials/a-practical-graphql-getting-started-guide-with-nodejs) tutorial is awesome 😎 
   - Run Webapp `cd web` and `npm start`, browse webapp at http://localhost:3000/
   - Run Mobile `cd mobile` and `npx react-native run-ios` for iOS and `npx react-native run-android` for Android
 - Production
@@ -121,17 +125,32 @@ Click on image to view fullscreen and zoom
 
 ## Multi-package automation
 - New developers are advised to run through the above 'setup and running' process before reading further.
-- Optional multi-package automation for faster setup and easier dev environment initiation.
+- Optional multi-package automation for faster setup and easier dev environment initiation, meaning it launches the API and Webapp on the local server with only one command.
 - No need to cd to sub-folders unless working with mobile or running a production build.
 - Once Node, MySQL, repo clone and configuration are setup correctly
-    - Switch to `code` directory `cd code`
+    - Switch to `code` directory `cd code` (`Crate/code`)
     - Setup
         - Setup API, Webapp and Mobile with a single command `npm run setup`
     - Development
-        - Run API and Webapp `npm start`, browse GraphiQL at http://localhost:8000/ and Webapp at http://localhost:8000/
+        - Run API and Webapp `npm start`, browse GraphiQL at http://localhost:8000/ and Webapp at http://localhost:3000/
         - Run API alone `npm start:api`, browse GraphiQL at http://localhost:8000/
         - Run Webapp alone `npm start:web`, browse webapp at http://localhost:3000/
-
+        
+## Testing 
+- Frameworks: Jest and Supertest  
+-Instructions
+    - Backend 
+        - cd into `Crate/code/api` on the CLI
+        - run `npm run test`
+        - you should see 5 passing tests 
+     - Frontend 
+        - cd into `Crate/code/web` on the CLI
+        - run `npm run test` 
+        - you should see 9 passing tests and 2 skipped tests (11 total) 
+ 
+ ![Passing Tests](https://user-images.githubusercontent.com/55362003/91650026-88f3c780-ea37-11ea-98f4-99b9a0a43b98.png)
+        
+        
 ## Resources and Inspirations
 - ✍️ Opinionated project architecture for Full-Stack JavaScript Applications - [GitHub](https://github.com/atulmy/fullstack-javascript-architecture)
 - 🌈 Simple Fullstack GraphQL Application - [GitHub](https://github.com/atulmy/fullstack-graphql)
@@ -162,7 +181,11 @@ Click on image to view fullscreen and zoom
 - Mateus Abdala - [GitHub](https://github.com/mateusabdala)
 - Hossein Nedaee - [GitHub](https://github.com/hosseinnedaee)
 - Mohammad Afzal - [GitHub](https://github.com/afzalex)
-- [YOUR NAME HERE] - Feel free to contribute to the codebase by resolving any open issues, refactoring, adding new features, writing test cases or any other way to make the project better and helpful to the community. Feel free to fork and send pull requests.
+- Rostam Mahabadi - [Github](http://github.com/rostammahabadi)
+- Carlos Flores - [Github](http://github.com/carlflor)
+- Eric Larson - [Github](http://github.com/EricLarson2020)
+- Léah Winters - [Github](http://github.com/stellakunzang)
+- Stella Bonnie - [Github](http://github.com/LeahWinters)
 
 
 ## Donate
